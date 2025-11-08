@@ -1,0 +1,12 @@
+# Ultra-Minimal Requirements for Streamlit Cloud
+# Last resort if standard requirements fail
+
+streamlit>=1.29.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+python-dotenv>=1.0.0
+spacy>=3.7.0
+textstat>=0.7.3
+markdown>=3.5.0
+beautifulsoup4>=4.12.0
+pyyaml>=6.0.1
