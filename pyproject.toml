@@ -1,0 +1,126 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clearcraft"
+version = "1.0.0"
+description = "Production-grade text clarity and readability enhancement tool with ethical guardrails"
+authors = [{name = "ClearCraft Team"}]
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Processing :: Linguistic",
+]
+
+dependencies = [
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "typer>=0.9.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "python-multipart>=0.0.6",
+    "jinja2>=3.1.0",
+    "python-dotenv>=1.0.0",
+
+    # NLP & Analysis
+    "spacy>=3.7.0",
+    "sentence-transformers>=2.3.0",
+    "transformers>=4.36.0",
+    "torch>=2.1.0",
+    "textstat>=0.7.3",
+    "lexicalrichness>=0.5.1",
+    "language-tool-python>=2.7.1",
+    "wordfreq>=3.0.3",
+
+    # Text Processing
+    "nltk>=3.8.1",
+    "markdown>=3.5.0",
+    "beautifulsoup4>=4.12.0",
+    "pyyaml>=6.0.1",
+
+    # Evaluation (optional)
+    "easse>=0.3.0",
+    "scikit-learn>=1.4.0",
+
+    # HTTP Client
+    "httpx>=0.26.0",
+    "openai>=1.10.0",
+
+    # Utilities
+    "rich>=13.7.0",
+    "tqdm>=4.66.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.1.0",
+    "mypy>=1.8.0",
+    "types-pyyaml>=6.0.0",
+    "types-markdown>=3.5.0",
+    "httpx>=0.26.0",
+]
+
+[project.scripts]
+clearcraft = "clearcraft.cli:app"
+
+[tool.setuptools]
+packages = ["clearcraft", "clearcraft.rewriters", "clearcraft.adapters"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP", "B", "A", "C4", "SIM", "TCH"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = "textstat.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "lexicalrichness.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "language_tool_python.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "wordfreq.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "easse.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "spacy.*"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = "-v --cov=clearcraft --cov-report=term-missing --cov-report=html"
+asyncio_mode = "auto"

@@ -1,0 +1,50 @@
+# Core Web Framework
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.6
+jinja2>=3.1.0
+
+# CLI
+typer>=0.9.0
+rich>=13.7.0
+
+# Configuration
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+python-dotenv>=1.0.0
+
+# NLP & Text Analysis
+spacy>=3.7.0
+sentence-transformers>=2.3.0
+transformers>=4.36.0
+torch>=2.1.0
+textstat>=0.7.3
+lexicalrichness>=0.5.1
+language-tool-python>=2.7.1
+wordfreq>=3.0.3
+nltk>=3.8.1
+
+# Text Processing
+markdown>=3.5.0
+beautifulsoup4>=4.12.0
+pyyaml>=6.0.1
+
+# Evaluation
+easse>=0.3.0
+scikit-learn>=1.4.0
+
+# HTTP Client for DeepInfra
+httpx>=0.26.0
+openai>=1.10.0
+
+# Utilities
+tqdm>=4.66.0
+
+# Development (optional)
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-asyncio>=0.23.0
+ruff>=0.1.0
+mypy>=1.8.0
+types-pyyaml>=6.0.0
+types-markdown>=3.5.0

@@ -1,0 +1,213 @@
+# English Jargon Simplification Lexicon
+# Maps technical/complex terms to simpler alternatives
+
+jargon:
+  utilize:
+    replacement: "use"
+    pos: "verb"
+    context: "general"
+
+  leverage:
+    replacement: "use"
+    pos: "verb"
+    context: "business"
+
+  facilitate:
+    replacement: "help"
+    pos: "verb"
+    context: "general"
+
+  commence:
+    replacement: "start"
+    pos: "verb"
+    context: "formal"
+
+  terminate:
+    replacement: "end"
+    pos: "verb"
+    context: "formal"
+
+  endeavor:
+    replacement: "try"
+    pos: "verb"
+    context: "formal"
+
+  ascertain:
+    replacement: "find out"
+    pos: "verb"
+    context: "formal"
+
+  prioritize:
+    replacement: "rank"
+    pos: "verb"
+    context: "business"
+
+  optimize:
+    replacement: "improve"
+    pos: "verb"
+    context: "technical"
+
+  implement:
+    replacement: "carry out"
+    pos: "verb"
+    context: "business"
+
+  subsequent:
+    replacement: "later"
+    pos: "adjective"
+    context: "formal"
+
+  prior:
+    replacement: "before"
+    pos: "adjective"
+    context: "formal"
+
+  additional:
+    replacement: "more"
+    pos: "adjective"
+    context: "general"
+
+  sufficient:
+    replacement: "enough"
+    pos: "adjective"
+    context: "formal"
+
+  numerous:
+    replacement: "many"
+    pos: "adjective"
+    context: "formal"
+
+  approximately:
+    replacement: "about"
+    pos: "adverb"
+    context: "formal"
+
+  consequently:
+    replacement: "so"
+    pos: "adverb"
+    context: "formal"
+
+  therefore:
+    replacement: "so"
+    pos: "adverb"
+    context: "formal"
+
+  accordingly:
+    replacement: "so"
+    pos: "adverb"
+    context: "formal"
+
+  furthermore:
+    replacement: "also"
+    pos: "adverb"
+    context: "formal"
+
+  moreover:
+    replacement: "also"
+    pos: "adverb"
+    context: "formal"
+
+  nevertheless:
+    replacement: "but"
+    pos: "adverb"
+    context: "formal"
+
+  notwithstanding:
+    replacement: "despite"
+    pos: "preposition"
+    context: "formal"
+
+  regarding:
+    replacement: "about"
+    pos: "preposition"
+    context: "business"
+
+  concerning:
+    replacement: "about"
+    pos: "preposition"
+    context: "formal"
+
+  pertaining:
+    replacement: "about"
+    pos: "adjective"
+    context: "formal"
+
+  methodology:
+    replacement: "method"
+    pos: "noun"
+    context: "academic"
+
+  paradigm:
+    replacement: "model"
+    pos: "noun"
+    context: "academic"
+
+  framework:
+    replacement: "structure"
+    pos: "noun"
+    context: "academic"
+
+  ecosystem:
+    replacement: "system"
+    pos: "noun"
+    context: "business"
+
+  bandwidth:
+    replacement: "capacity"
+    pos: "noun"
+    context: "business"
+
+  deliverable:
+    replacement: "result"
+    pos: "noun"
+    context: "business"
+
+  synergy:
+    replacement: "cooperation"
+    pos: "noun"
+    context: "business"
+
+  actionable:
+    replacement: "practical"
+    pos: "adjective"
+    context: "business"
+
+  granular:
+    replacement: "detailed"
+    pos: "adjective"
+    context: "business"
+
+  holistic:
+    replacement: "complete"
+    pos: "adjective"
+    context: "business"
+
+  robust:
+    replacement: "strong"
+    pos: "adjective"
+    context: "technical"
+
+  scalable:
+    replacement: "expandable"
+    pos: "adjective"
+    context: "technical"
+
+  innovative:
+    replacement: "new"
+    pos: "adjective"
+    context: "business"
+
+  cutting-edge:
+    replacement: "advanced"
+    pos: "adjective"
+    context: "marketing"
+
+  state-of-the-art:
+    replacement: "advanced"
+    pos: "adjective"
+    context: "technical"
+
+  next-generation:
+    replacement: "new"
+    pos: "adjective"
+    context: "marketing"

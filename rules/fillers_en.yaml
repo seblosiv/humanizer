@@ -1,0 +1,103 @@
+# English Filler Phrases
+# Stock phrases that add little value and can often be removed
+
+fillers:
+  - "basically"
+  - "actually"
+  - "literally"
+  - "honestly"
+  - "really"
+  - "very unique"
+  - "kind of"
+  - "sort of"
+  - "in order to"
+  - "due to the fact that"
+  - "in spite of the fact that"
+  - "at this point in time"
+  - "at the present time"
+  - "for all intents and purposes"
+  - "in the final analysis"
+  - "in my opinion"
+  - "I think that"
+  - "I believe that"
+  - "it should be noted that"
+  - "it is important to note that"
+  - "it goes without saying"
+  - "needless to say"
+  - "as a matter of fact"
+  - "the fact of the matter is"
+  - "at the end of the day"
+  - "when all is said and done"
+  - "to make a long story short"
+  - "in a nutshell"
+  - "in conclusion"
+  - "in summary"
+  - "to sum up"
+  - "as you can see"
+  - "as previously mentioned"
+  - "as stated earlier"
+  - "each and every"
+  - "first and foremost"
+  - "last but not least"
+  - "tried and true"
+  - "null and void"
+  - "past history"
+  - "past experience"
+  - "future plans"
+  - "advance planning"
+  - "end result"
+  - "final outcome"
+  - "free gift"
+  - "true fact"
+  - "completely finished"
+  - "absolutely essential"
+  - "totally awesome"
+  - "quite unique"
+  - "rather interesting"
+  - "somewhat difficult"
+
+# Discourse markers and their alternatives for variation
+discourse_markers:
+  however:
+    - "Nevertheless"
+    - "Nonetheless"
+    - "Yet"
+    - "Still"
+
+  therefore:
+    - "Thus"
+    - "Hence"
+    - "Consequently"
+    - "As a result"
+
+  furthermore:
+    - "Moreover"
+    - "Additionally"
+    - "In addition"
+    - "Also"
+
+  for example:
+    - "For instance"
+    - "Such as"
+    - "Like"
+
+  in conclusion:
+    - "To conclude"
+    - "In summary"
+    - "To sum up"
+    - "Finally"
+
+  first:
+    - "Firstly"
+    - "To begin"
+    - "Initially"
+
+  second:
+    - "Secondly"
+    - "Next"
+    - "Then"
+
+  finally:
+    - "Lastly"
+    - "In the end"
+    - "Ultimately"

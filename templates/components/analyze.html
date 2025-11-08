@@ -1,0 +1,91 @@
+<div class="bg-white border border-gray-200 rounded-lg p-6">
+    <h3 class="text-lg font-semibold text-gray-900 mb-4">Analysis Results</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Flesch Reading Ease -->
+        <div class="bg-gray-50 rounded-lg p-4">
+            <p class="text-sm text-gray-600 mb-1">Flesch Reading Ease</p>
+            <p class="text-3xl font-bold text-purple-600">{{ metrics.flesch_reading_ease }}</p>
+            <p class="text-xs text-gray-500 mt-1">
+                {% if metrics.flesch_reading_ease >= 80 %}Very Easy
+                {% elif metrics.flesch_reading_ease >= 70 %}Easy
+                {% elif metrics.flesch_reading_ease >= 60 %}Fairly Easy
+                {% elif metrics.flesch_reading_ease >= 50 %}Standard
+                {% elif metrics.flesch_reading_ease >= 30 %}Fairly Difficult
+                {% else %}Difficult
+                {% endif %}
+            </p>
+        </div>
+
+        <!-- Flesch-Kincaid Grade -->
+        <div class="bg-gray-50 rounded-lg p-4">
+            <p class="text-sm text-gray-600 mb-1">Flesch-Kincaid Grade</p>
+            <p class="text-3xl font-bold text-purple-600">{{ metrics.flesch_kincaid_grade }}</p>
+            <p class="text-xs text-gray-500 mt-1">Grade {{ metrics.flesch_kincaid_grade|int }} level</p>
+        </div>
+
+        <!-- Gunning Fog -->
+        <div class="bg-gray-50 rounded-lg p-4">
+            <p class="text-sm text-gray-600 mb-1">Gunning Fog Index</p>
+            <p class="text-3xl font-bold text-purple-600">{{ metrics.gunning_fog }}</p>
+            <p class="text-xs text-gray-500 mt-1">{{ metrics.gunning_fog|int }} years education</p>
+        </div>
+
+        <!-- Avg Sentence Length -->
+        <div class="bg-gray-50 rounded-lg p-4">
+            <p class="text-sm text-gray-600 mb-1">Avg Sentence Length</p>
+            <p class="text-3xl font-bold text-purple-600">{{ metrics.avg_sentence_length }}</p>
+            <p class="text-xs text-gray-500 mt-1">
+                {% if 14 <= metrics.avg_sentence_length <= 22 %}
+                <span class="text-green-600">✓ Good</span>
+                {% else %}
+                <span class="text-yellow-600">⚠ Could improve</span>
+                {% endif %}
+            </p>
+        </div>
+
+        <!-- Type-Token Ratio -->
+        <div class="bg-gray-50 rounded-lg p-4">
+            <p class="text-sm text-gray-600 mb-1">Type-Token Ratio</p>
+            <p class="text-3xl font-bold text-purple-600">{{ metrics.ttr }}</p>
+            <p class="text-xs text-gray-500 mt-1">
+                {% if metrics.ttr >= 0.5 %}
+                <span class="text-green-600">✓ Good variety</span>
+                {% else %}
+                <span class="text-yellow-600">⚠ Low variety</span>
+                {% endif %}
+            </p>
+        </div>
+
+        <!-- Passive Voice -->
+        <div class="bg-gray-50 rounded-lg p-4">
+            <p class="text-sm text-gray-600 mb-1">Passive Voice</p>
+            <p class="text-3xl font-bold text-purple-600">{{ (metrics.passive_ratio * 100)|round(1) }}%</p>
+            <p class="text-xs text-gray-500 mt-1">
+                {% if metrics.passive_ratio <= 0.15 %}
+                <span class="text-green-600">✓ Good</span>
+                {% else %}
+                <span class="text-yellow-600">⚠ High</span>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+    <!-- Summary Stats -->
+    <div class="mt-6 pt-6 border-t border-gray-200">
+        <div class="grid grid-cols-3 gap-4 text-center">
+            <div>
+                <p class="text-sm text-gray-600">Total Words</p>
+                <p class="text-xl font-semibold text-gray-900">{{ metrics.total_words }}</p>
+            </div>
+            <div>
+                <p class="text-sm text-gray-600">Unique Words</p>
+                <p class="text-xl font-semibold text-gray-900">{{ metrics.unique_words }}</p>
+            </div>
+            <div>
+                <p class="text-sm text-gray-600">Sentences</p>
+                <p class="text-xl font-semibold text-gray-900">{{ metrics.sentence_count }}</p>
+            </div>
+        </div>
+    </div>
+</div>
