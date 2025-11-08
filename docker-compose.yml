@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  clearcraft:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: clearcraft
+    ports:
+      - "8000:8000"
+    environment:
+      # Server Configuration
+      - HOST=0.0.0.0
+      - PORT=8000
+      - DEBUG=false
+
+      # DeepInfra (Optional - set your API token)
+      - DEEPINFRA_API_TOKEN=${DEEPINFRA_API_TOKEN:-}
+      - DEEPINFRA_MODEL=meta-llama/Llama-4-Maverick-17B
+
+      # Processing Limits
+      - MAX_TEXT_LENGTH=50000
+      - CHUNK_SIZE=1000
+
+      # Quality Guardrails
+      - MAX_CHANGE_RATIO=0.30
+      - SIMILARITY_MIN=0.92
+      - PRESERVE_CITATIONS=true
+
+      # Readability Targets
+      - TARGET_AVG_SENTENCE_LENGTH_MIN=14
+      - TARGET_AVG_SENTENCE_LENGTH_MAX=22
+      - MAX_PASSIVE_RATIO=0.15
+      - MAX_REPETITION_RATIO=0.10
+
+      # Privacy & Compliance
+      - ENABLE_DISCLOSURE=true
+      - REDACT_PII_IN_LOGS=true
+
+      # Logging
+      - LOG_LEVEL=INFO
+    volumes:
+      # Persist model cache
+      - model-cache:/app/.cache
+      # Optional: Mount custom rules
+      # - ./rules:/app/rules:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - clearcraft-network
+
+volumes:
+  model-cache:
+    driver: local
+
+networks:
+  clearcraft-network:
+    driver: bridge

@@ -122,6 +122,18 @@ async def index(request: Request):
     )
 
 
+@app.get("/docs", response_class=HTMLResponse)
+async def api_documentation(request: Request):
+    """Serve API documentation page."""
+    return templates.TemplateResponse(
+        "docs.html",
+        {
+            "request": request,
+            "deepinfra_enabled": settings.is_deepinfra_enabled,
+        },
+    )
+
+
 @app.get("/healthz")
 async def health_check():
     """Health check endpoint."""

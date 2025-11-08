@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+
+{% block title %}API Documentation - ClearCraft{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-gray-900 mb-6">API Documentation</h1>
+
+    <!-- Introduction -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Introduction</h2>
+        <p class="text-gray-700 mb-4">
+            The ClearCraft API provides programmatic access to text analysis and rewriting capabilities.
+            All endpoints return JSON responses and follow RESTful conventions.
+        </p>
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+            <p class="text-blue-800">
+                <strong>Base URL:</strong> <code class="bg-blue-100 px-2 py-1 rounded">http://localhost:8000</code>
+            </p>
+        </div>
+    </div>
+
+    <!-- Health Check -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Health Check</h2>
+        <div class="bg-gray-50 rounded p-4 mb-4">
+            <code class="text-green-600 font-semibold">GET /healthz</code>
+        </div>
+        <p class="text-gray-700 mb-4">Check if the service is running.</p>
+        <h3 class="font-semibold text-gray-900 mb-2">Example Response:</h3>
+        <pre class="bg-gray-900 text-green-400 p-4 rounded overflow-x-auto"><code>{
+  "status": "healthy",
+  "version": "1.0.0"
+}</code></pre>
+    </div>
+
+    <!-- Analyze Endpoint -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Analyze Text</h2>
+        <div class="bg-gray-50 rounded p-4 mb-4">
+            <code class="text-blue-600 font-semibold">POST /api/analyze</code>
+        </div>
+        <p class="text-gray-700 mb-4">Analyze text for readability metrics.</p>
+
+        <h3 class="font-semibold text-gray-900 mb-2">Request Body:</h3>
+        <pre class="bg-gray-900 text-green-400 p-4 rounded overflow-x-auto mb-4"><code>{
+  "text": "Your text to analyze here."
+}</code></pre>
+
+        <h3 class="font-semibold text-gray-900 mb-2">Response:</h3>
+        <pre class="bg-gray-900 text-green-400 p-4 rounded overflow-x-auto mb-4"><code>{
+  "metrics": {
+    "flesch_reading_ease": 65.2,
+    "flesch_kincaid_grade": 8.1,
+    "gunning_fog": 10.3,
+    "smog_index": 9.5,
+    "sentence_count": 5,
+    "avg_sentence_length": 15.2,
+    "avg_word_length": 4.8,
+    "mtld": 52.3,
+    "ttr": 0.75,
+    "unique_words": 45,
+    "total_words": 60,
+    "passive_ratio": 0.20,
+    "repetition_ratio": 0.05
+  },
+  "warnings": [
+    "High passive voice usage (20%). Consider using more active voice."
+  ]
+}</code></pre>
+
+        <h3 class="font-semibold text-gray-900 mb-2">cURL Example:</h3>
+        <pre class="bg-gray-900 text-green-400 p-4 rounded overflow-x-auto"><code>curl -X POST http://localhost:8000/api/analyze \
+  -H "Content-Type: application/json" \
+  -d '{"text": "Your text here."}'</code></pre>
+    </div>
+
+    <!-- Rewrite Endpoint -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Rewrite Text</h2>
+        <div class="bg-gray-50 rounded p-4 mb-4">
+            <code class="text-purple-600 font-semibold">POST /api/rewrite</code>
+        </div>
+        <p class="text-gray-700 mb-4">Rewrite text for improved clarity and readability.</p>
+
+        <h3 class="font-semibold text-gray-900 mb-2">Request Body:</h3>
+        <pre class="bg-gray-900 text-green-400 p-4 rounded overflow-x-auto mb-4"><code>{
+  "text": "Your text to rewrite here.",
+  "tone": "neutral",
+  "target_sentence_length_min": 14,
+  "target_sentence_length_max": 22,
+  "max_change_ratio": 0.30,
+  "similarity_min": 0.92,
+  "enable_llm": false,
+  "enable_disclosure": true
+}</code></pre>
+
+        <h3 class="font-semibold text-gray-900 mb-2">Parameters:</h3>
+        <table class="w-full mb-4 border border-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="px-4 py-2 text-left text-gray-700">Parameter</th>
+                    <th class="px-4 py-2 text-left text-gray-700">Type</th>
+                    <th class="px-4 py-2 text-left text-gray-700">Default</th>
+                    <th class="px-4 py-2 text-left text-gray-700">Description</th>
+                </tr>
+            </thead>
+            <tbody class="text-sm">
+                <tr class="border-t">
+                    <td class="px-4 py-2"><code>text</code></td>
+                    <td class="px-4 py-2">string</td>
+                    <td class="px-4 py-2">-</td>
+                    <td class="px-4 py-2">Text to rewrite (required)</td>
+                </tr>
+                <tr class="border-t">
+                    <td class="px-4 py-2"><code>tone</code></td>
+                    <td class="px-4 py-2">string</td>
+                    <td class="px-4 py-2">"neutral"</td>
+                    <td class="px-4 py-2">neutral, academic, or conversational</td>
+                </tr>
+                <tr class="border-t">
+                    <td class="px-4 py-2"><code>target_sentence_length_min</code></td>
+                    <td class="px-4 py-2">integer</td>
+                    <td class="px-4 py-2">14</td>
+                    <td class="px-4 py-2">Minimum avg sentence length</td>
+                </tr>
+                <tr class="border-t">
+                    <td class="px-4 py-2"><code>target_sentence_length_max</code></td>
+                    <td class="px-4 py-2">integer</td>
+                    <td class="px-4 py-2">22</td>
+                    <td class="px-4 py-2">Maximum avg sentence length</td>
+                </tr>
+                <tr class="border-t">
+                    <td class="px-4 py-2"><code>max_change_ratio</code></td>
+                    <td class="px-4 py-2">float</td>
+                    <td class="px-4 py-2">0.30</td>
+                    <td class="px-4 py-2">Maximum allowed change ratio (0.0-1.0)</td>
+                </tr>
+                <tr class="border-t">
+                    <td class="px-4 py-2"><code>similarity_min</code></td>
+                    <td class="px-4 py-2">float</td>
+                    <td class="px-4 py-2">0.92</td>
+                    <td class="px-4 py-2">Minimum semantic similarity (0.0-1.0)</td>
+                </tr>
+                <tr class="border-t">
+                    <td class="px-4 py-2"><code>enable_llm</code></td>
+                    <td class="px-4 py-2">boolean</td>
+                    <td class="px-4 py-2">false</td>
+                    <td class="px-4 py-2">Enable LLM polish (requires API key)</td>
+                </tr>
+                <tr class="border-t">
+                    <td class="px-4 py-2"><code>enable_disclosure</code></td>
+                    <td class="px-4 py-2">boolean</td>
+                    <td class="px-4 py-2">true</td>
+                    <td class="px-4 py-2">Add disclosure message</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="font-semibold text-gray-900 mb-2">Response:</h3>
+        <pre class="bg-gray-900 text-green-400 p-4 rounded overflow-x-auto mb-4"><code>{
+  "original_text": "The report was written by the team.",
+  "rewritten_text": "The team wrote the report.\n\n---\n*Edited with AI assistance.*",
+  "original_metrics": { /* ReadabilityMetrics */ },
+  "rewritten_metrics": { /* ReadabilityMetrics */ },
+  "changes": [
+    {
+      "pass_name": "voice_active",
+      "tokens_changed": 2,
+      "confidence": 0.75,
+      "reason": "passive_by_agent",
+      "similarity_score": 0.95
+    }
+  ],
+  "overall_similarity": 0.94,
+  "total_change_ratio": 0.18,
+  "disclosure_added": true
+}</code></pre>
+
+        <h3 class="font-semibold text-gray-900 mb-2">cURL Example:</h3>
+        <pre class="bg-gray-900 text-green-400 p-4 rounded overflow-x-auto"><code>curl -X POST http://localhost:8000/api/rewrite \
+  -H "Content-Type: application/json" \
+  -d '{
+    "text": "The report was written by the team.",
+    "tone": "neutral",
+    "enable_llm": false
+  }'</code></pre>
+    </div>
+
+    <!-- Error Responses -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Error Responses</h2>
+
+        <h3 class="font-semibold text-gray-900 mb-2">400 Bad Request:</h3>
+        <pre class="bg-gray-900 text-red-400 p-4 rounded overflow-x-auto mb-4"><code>{
+  "detail": "Text too long: 60000 characters > 50000 (max allowed)"
+}</code></pre>
+
+        <h3 class="font-semibold text-gray-900 mb-2">403 Forbidden (Disallowed Intent):</h3>
+        <pre class="bg-gray-900 text-red-400 p-4 rounded overflow-x-auto mb-4"><code>{
+  "detail": "Disallowed intent detected: 'bypass' - ClearCraft does not support bypassing AI detectors."
+}</code></pre>
+
+        <h3 class="font-semibold text-gray-900 mb-2">500 Internal Server Error:</h3>
+        <pre class="bg-gray-900 text-red-400 p-4 rounded overflow-x-auto"><code>{
+  "detail": "Analysis failed: Unexpected error occurred"
+}</code></pre>
+    </div>
+
+    <!-- Rate Limits -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Limits & Constraints</h2>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li><strong>Max Text Length:</strong> 50,000 characters (configurable)</li>
+            <li><strong>Max Change Ratio:</strong> 30% (configurable)</li>
+            <li><strong>Min Similarity:</strong> 92% (configurable)</li>
+            <li><strong>Request Timeout:</strong> 120 seconds</li>
+        </ul>
+    </div>
+
+    <!-- Python SDK -->
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Python SDK</h2>
+        <p class="text-gray-700 mb-4">
+            For Python applications, you can use the native API instead of HTTP requests:
+        </p>
+        <pre class="bg-gray-900 text-green-400 p-4 rounded overflow-x-auto"><code>from clearcraft.selector import TextSelector
+
+# Initialize
+selector = TextSelector(enable_llm=False)
+
+# Rewrite text
+result = selector.rewrite(
+    text="Your text here",
+    tone="neutral"
+)
+
+print(result.rewritten_text)
+print(f"Similarity: {result.overall_similarity:.1%}")</code></pre>
+    </div>
+</div>
+{% endblock %}
