@@ -78,21 +78,28 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-def load_models():
+def load_models(enable_llm=False, api_key=None):
     """Load models with caching."""
     try:
         from clearcraft.analysis import TextAnalyzer
         from clearcraft.selector import TextSelector
         from clearcraft.similarity import SimilarityChecker
+        import os
+
+        # Set API key if provided
+        if api_key:
+            os.environ['DEEPINFRA_API_TOKEN'] = api_key
 
         analyzer = TextAnalyzer()
-        selector = TextSelector(enable_llm=False)  # LLM disabled for public deployment
+        selector = TextSelector(enable_llm=enable_llm)
         similarity_checker = SimilarityChecker()
 
         return analyzer, selector, similarity_checker
     except Exception as e:
         st.error(f"Error loading models: {e}")
         st.info("This may take a moment on first run as models are downloaded...")
+        import traceback
+        st.code(traceback.format_exc())
         return None, None, None
 
 
@@ -159,6 +166,40 @@ def main():
 
         st.divider()
 
+        st.header("🤖 DeepInfra LLM (Optional)")
+
+        enable_llm = st.checkbox(
+            "Enable LLM Enhancement",
+            value=False,
+            help="Use DeepInfra LLM for additional polish (requires API key)"
+        )
+
+        deepinfra_api_key = None
+        llm_model = None
+
+        if enable_llm:
+            deepinfra_api_key = st.text_input(
+                "DeepInfra API Key",
+                type="password",
+                help="Get your API key from https://deepinfra.com"
+            )
+
+            llm_model = st.selectbox(
+                "LLM Model",
+                options=[
+                    "meta-llama/Llama-4-Maverick-17B",
+                    "anthropic/claude-3-7-sonnet",
+                    "Qwen/Qwen3-235B-Instruct",
+                    "microsoft/deepseek-v2"
+                ],
+                help="Choose the LLM model to use"
+            )
+
+            if not deepinfra_api_key:
+                st.warning("⚠️ Please enter your DeepInfra API key to use LLM features")
+
+        st.divider()
+
         st.caption("**Ethical AI Tool**")
         st.caption("Designed for legitimate text improvement only.")
 
@@ -171,7 +212,10 @@ def main():
         # Load models if not loaded
         if not st.session_state.models_loaded:
             with st.spinner("Loading AI models... This may take a moment on first use."):
-                analyzer, selector, similarity_checker = load_models()
+                analyzer, selector, similarity_checker = load_models(
+                    enable_llm=enable_llm if enable_llm and deepinfra_api_key else False,
+                    api_key=deepinfra_api_key if enable_llm else None
+                )
                 if analyzer and selector:
                     st.session_state.analyzer = analyzer
                     st.session_state.selector = selector

@@ -1,12 +1,29 @@
-# ABSOLUTE MINIMAL - Streamlit Cloud Free Tier
-# Total: ~60MB - Core functionality only
+# Full Requirements for ML Deployment
+# For HuggingFace Spaces, Railway, or Streamlit Teams
 
-streamlit
-pydantic
-pydantic-settings
-python-dotenv
-textstat
-lexicalrichness
-markdown
-beautifulsoup4
-pyyaml
+streamlit>=1.29.0
+
+# Configuration
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+python-dotenv>=1.0.0
+
+# NLP & ML Core
+spacy>=3.7.0
+sentence-transformers>=2.3.0
+transformers>=4.36.0
+torch>=2.1.0
+textstat>=0.7.3
+lexicalrichness>=0.5.1
+
+# Text Processing
+markdown>=3.5.0
+beautifulsoup4>=4.12.0
+pyyaml>=6.0.1
+
+# Utilities
+scikit-learn>=1.4.0
+
+# DeepInfra LLM Support
+httpx>=0.26.0
+openai>=1.10.0
