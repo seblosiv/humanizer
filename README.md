@@ -18,6 +18,19 @@ All improvements focus on genuine clarity, coherence, and authentic human tone.
 
 ---
 
+## 📚 Documentation
+
+- **[Quick Start Guide](QUICKSTART.md)** - Get up and running in 5 minutes
+- **[Usage Examples](USAGE.md)** - Comprehensive CLI, API, and Python examples
+- **[Research Methods](METHODS.md)** - Scientific basis with formulas and citations
+- **[Deployment Guide](DEPLOYMENT.md)** - Production deployment for all platforms
+- **[Contributing Guide](CONTRIBUTING.md)** - How to contribute to the project
+- **[Project Summary](PROJECT_SUMMARY.md)** - Complete project overview
+- **[Changelog](CHANGELOG.md)** - Version history and release notes
+- **[API Documentation](http://localhost:8000/docs)** - Interactive API reference (when server running)
+
+---
+
 ## ✨ Features
 
 ### Core Capabilities
