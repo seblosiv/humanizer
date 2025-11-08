@@ -4,6 +4,17 @@
 
 ClearCraft is a Python web application designed to improve text clarity, readability, and flow while preserving meaning, citations, and formatting. It employs deterministic text processing combined with optional LLM-based polishing, all under strict semantic similarity and change ratio constraints.
 
+## 🚀 Quick Deploy
+
+[![Deploy to Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy?repository=seblosiv/humanizer&branch=claude/clearcraft-humanizer-app-011CUvktJ3WqTF1d715kpMAg&mainModule=streamlit_app.py)
+
+**One-Click Deployment**: Click the badge above to deploy ClearCraft to Streamlit Cloud instantly!
+
+Or use this direct link:
+```
+https://share.streamlit.io/deploy?repository=seblosiv/humanizer&branch=claude/clearcraft-humanizer-app-011CUvktJ3WqTF1d715kpMAg&mainModule=streamlit_app.py
+```
+
 ---
 
 ## 🎯 Purpose
@@ -20,10 +31,14 @@ All improvements focus on genuine clarity, coherence, and authentic human tone.
 
 ## 📚 Documentation
 
-- **[Quick Start Guide](QUICKSTART.md)** - Get up and running in 5 minutes
+- **[Streamlit Deployment Guide](STREAMLIT_DEPLOY.md)** - Deploy to Streamlit Cloud in 5 minutes
+- **[Quick Start Guide](QUICKSTART.md)** - Get up and running locally in 5 minutes
 - **[Usage Examples](USAGE.md)** - Comprehensive CLI, API, and Python examples
 - **[Research Methods](METHODS.md)** - Scientific basis with formulas and citations
 - **[Deployment Guide](DEPLOYMENT.md)** - Production deployment for all platforms
+- **[Performance Tuning](PERFORMANCE.md)** - Optimization strategies and benchmarking
+- **[Security Best Practices](SECURITY.md)** - Security hardening and compliance
+- **[Troubleshooting](TROUBLESHOOTING.md)** - Common issues and solutions
 - **[Contributing Guide](CONTRIBUTING.md)** - How to contribute to the project
 - **[Project Summary](PROJECT_SUMMARY.md)** - Complete project overview
 - **[Changelog](CHANGELOG.md)** - Version history and release notes
