@@ -1,23 +1,12 @@
-# Streamlit Cloud FREE TIER Requirements
-# Ultra-lightweight - NO PyTorch/Transformers
-# Total size: ~150MB (vs 1.5GB+ with ML models)
+# ABSOLUTE MINIMAL - Streamlit Cloud Free Tier
+# Total: ~60MB - Core functionality only
 
-streamlit>=1.29.0
-
-# Configuration
-pydantic>=2.5.0
-pydantic-settings>=2.1.0
-python-dotenv>=1.0.0
-
-# Lightweight NLP (spaCy only, no heavy ML models)
-spacy>=3.7.0
-textstat>=0.7.3
-lexicalrichness>=0.5.1
-
-# Text Processing
-markdown>=3.5.0
-beautifulsoup4>=4.12.0
-pyyaml>=6.0.1
-
-# Basic similarity (no neural networks)
-scikit-learn>=1.3.0
+streamlit
+pydantic
+pydantic-settings
+python-dotenv
+textstat
+lexicalrichness
+markdown
+beautifulsoup4
+pyyaml
